@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Information</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Banner Section -->
+    <div>
+        <img src="https://rmkcet.ac.in/new_design_images/top-header-tablet.png" alt="College Banner" class="banner">
+    </div>
+
+    <!-- Academic Performance Heading -->
+    <div class="container text-center">
+        <h2 class="academic-performance-heading">Student Details</h2>
+    </div>
+    
+    <!-- Student Registration Section -->
+    <div class="container mt-4">
+        <div class="form-group">
+            <label for="regNo">Enter Registration Number:</label>
+            <input type="text" id="regNo" class="form-control" placeholder="Enter Registration Number">
+        </div>
+        <button id="fetchDetailsButton" class="btn btn-primary mt-2">Fetch Student Details</button>
+    </div>
+
+    <!-- Display student details -->
+    <div id="studentDetailsContainer" class="container mt-4" style="display: none;">
+        <h3>Student Information</h3>
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th>Information</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Register Number</td>
+                    <td id="studentRegNo">N/A</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td id="studentName">N/A</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td id="studentEmail">N/A</td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td id="studentPhone">N/A</td>
+                </tr>
+                <tr>
+                    <td>Parent's Phone</td>
+                    <td id="studentParentPhone">N/A</td>
+                </tr>
+                <tr>
+                    <td>Department</td>
+                    <td id="studentDepartment">N/A</td>
+                </tr>
+                <tr>
+                    <td>Current Semester</td>
+                    <td id="studentSemester">N/A</td>
+                </tr>
+                <tr>
+                    <td>CGPA</td>
+                    <td id="studentCGPA">N/A</td>
+                </tr>
+                <tr>
+                    <td>Attendance Percentage</td>
+                    <td id="studentAttendancePercentage">N/A</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Error message container -->
+    <div id="errorMessage" class="container mt-4" style="display: none; color: red;">
+        <p>Student details not found! Please check the registration number and try again.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script> <!-- External JavaScript file -->
+</body>
+</html>

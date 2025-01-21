@@ -1,0 +1,68 @@
+
+
+.banner {
+    width: 100%; /* Full width of the screen */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Add space below the banner */
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Positions photo and name on opposite sides */
+    margin: -50px 20px 20px 20px; /* Adjusts the position */
+}
+
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0e7ff; /* Light blue shade */
+    padding: 15px 20px;
+    border-bottom: 1px solid #d1d5db;
+}
+
+.header h2 {
+    margin: 0;
+    color: #000;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.info-table thead {
+    background-color: #e0e7ff;
+    color: #000;
+}
+
+.info-table th,
+.info-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #d1d5db;
+}
+
+.info-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.info-table td {
+    color: #4b5563; /* Dark gray for text */
+}
+
+.info-table td:first-child {
+    font-weight: bold;
+}

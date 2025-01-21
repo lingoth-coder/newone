@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="head.png" alt="" style="width: 100%;height:20vh">
+    </header>
+    <div class="container">
+        <h1 style="">Student Tracker</h1>
+        
+        <label for="uploadType">Choose upload type:</label>
+        <br>
+        <select id="uploadType">
+            <option value="marks">Marks</option>
+            <option value="attendance">Attendance</option>
+            <option value="studentDetails">Student Details</option>
+        </select>
+
+        <!-- Marks upload section -->
+        <div id="marksUpload" class="uploadSection">
+            <label for="year">Select Year:</label>
+            <select id="year">
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+            </select>
+
+            <label for="examType">Select Exam Type:</label>
+            <select id="examType">
+                <option value="UnitTest">Unit Test</option>
+                <option value="IAT1">IAT1</option>
+                <option value="IAT2">IAT2</option>
+                <option value="ModelExam">Model Exam</option>
+                <option value="Semester">Semester</option>
+            </select>
+
+            <label for="marksFile">Upload Marks File:</label>
+            <input type="file" id="marksFile" accept=".xls,.xlsx,.csv" />
+        </div>
+
+        <!-- Attendance upload section -->
+        <div id="attendanceUpload" class="uploadSection" style="display:none;">
+            <label for="attendanceFile">Upload Attendance File:</label>
+            <input type="file" id="attendanceFile" accept=".xls,.xlsx,.csv" />
+        </div>
+
+        <!-- Student Details upload section -->
+        <div id="studentDetailsUpload" class="uploadSection" style="display:none;">
+            <label for="studentDetailsFile">Upload Student Details File:</label>
+            <input type="file" id="studentDetailsFile" accept=".xls,.xlsx,.csv" />
+        </div>
+        
+        <button id="uploadButton">Upload</button>
+    </div>
+
+    <script>
+        // Ensure DOM is fully loaded before executing the script
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('fetchDetailsButton')?.addEventListener('click', async (event) => {
+                event.preventDefault();
+                const regNo = document.getElementById('regNo')?.value;
+                console.log('Fetching details for Register Number:', regNo);
+
+                try {
+                    const response = await fetch(`http://127.0.0.1:3000/api/studentDetails/students/${regNo}`);
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch student details');
+                    }
+                    const studentData = await response.json();
+                    document.getElementById('studentRegNo').textContent = studentData.regNo || 'N/A';
+                    document.getElementById('studentName').textContent = studentData.name || 'N/A';
+                    // Populate other fields similarly...
+                    document.getElementById('studentDetailsContainer').style.display = 'block';
+                } catch (error) {
+                    console.error('Error fetching student details:', error);
+                    alert('Error fetching student details');
+                }
+            });
+
+            document.getElementById('uploadButton')?.addEventListener('click', async (event) => {
+                event.preventDefault();
+                const uploadType = document.getElementById('uploadType')?.value;
+                const formData = new FormData();
+
+                if (uploadType === 'marks') {
+                    await handleMarksUpload(formData);
+                } else if (uploadType === 'attendance') {
+                    await handleAttendanceUpload(formData);
+                } else if (uploadType === 'studentDetails') {
+                    await handleStudentDetailsUpload(formData);
+                }
+            });
+
+            // Toggle sections on upload type change
+            document.getElementById('uploadType')?.addEventListener('change', function () {
+                const uploadType = this.value;
+                document.getElementById('marksUpload').style.display = uploadType === 'marks' ? 'flex' : 'none';
+                document.getElementById('attendanceUpload').style.display = uploadType === 'attendance' ? 'block' : 'none';
+                document.getElementById('studentDetailsUpload').style.display = uploadType === 'studentDetails' ? 'block' : 'none';
+            });
+        });
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>

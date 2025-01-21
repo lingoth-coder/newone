@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="head.png" alt="" style="width: 100%;height:20vh">
+    </header>
+
+    <div id="regnoInputSection" style="text-align: center; margin-top: 20px;margin-top:100px">
+        <h2 style="color: #021a2b;font-size:220%">Enter Registration Number</h2>
+        <br>
+        <div style="width: 100%;display:flex;height:40vh;align-items:center;justify-content:center">
+        <input type="text" id="regnoInput" placeholder="Enter RegNo" style="padding: 10px; font-size: 16px;">
+        <button onclick="fetchStudentAnalysis()" style="width:100px;height:48px;background-color: #063d65;border:none;color:white">Next</button>
+    </div>
+    </div>
+    
+   
+
+    <div id="loading" style="display: none; text-align: center;margin-top:100px">
+        <img src="load.gif" alt="Loading..."  style="height: 200px;width:250px"/>
+    </div>
+
+    <div id="dashboard" style="display: none;">
+        <br>
+        <div style="width: 100%;height:10vh;display:flex;justify-content:center;align-items:center">
+            <h1 style="color: rgb(7, 73, 159);font-family:monospace;font-size:280%;">Academic Performance</h1>
+        </div>
+        <br>
+        <div class="profile">
+            <div class="img">
+                <img src="pro.webp" alt="profile" style="width: 60%;height:100%;border-radius:1000px">
+            </div>
+            <div class="det">
+                <div class="name" id="sname"></div>
+                <div class="dete" id="det"></div>
+                <br>
+                <div id="per"></div>
+                <div class="outat">
+                    <div id="attend" class="attend"></div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="out">
+            <div class="in">
+                <div class="exam">
+                    <div style="font-size: 125;font-weight:bolder">IAT1</div>
+                    <div id="iat1"></div>
+                </div>
+
+                <div class="exam">
+                    <div style="font-size: 125;font-weight:bolder">IAT2</div>
+                    <div id="iat2"></div>
+                </div>
+
+                <div class="exam">
+                    <div style="font-size: 125;font-weight:bolder">Model</div>
+                    <div id="model"></div>
+                </div>
+
+                <div class="exam">
+                    <div style="font-size: 125;font-weight:bolder">Semester</div>
+                    <div id="sem"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subdet">
+            <div style="width:49%;height:100%;display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:10px">
+                <div id="sum" class="sum"></div>
+                <div id="prev" class="prev"></div>
+            </div>
+
+            <div class="sub">
+                <div class="tit">SUBJECTS</div>
+                <div id="sub"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
